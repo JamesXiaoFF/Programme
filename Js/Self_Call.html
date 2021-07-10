@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {}
+        Object.setPrototypeOf(obj, {
+            max() {
+                return this.data.reduce((pre, cur) => pre > cur ? pre : cur)
+            },
+            max2(data) {
+                return data.reduce((pre, cur) => pre > cur ? pre : cur)
+            }
+        })
+
+        Function.prototype.newcall = function (obj) {
+            obj = obj || window
+            obj.p = this  //给函数添加“函数”作为“方法”
+            let inputArguments = []
+            for (let i = 1; i < arguments.length; i++) {
+                inputArguments.push(arguments[i])
+            }
+            let res = obj.p(...inputArguments)  //执行该方法
+            delete obj.p  //但执行后记得要删除该方法，因为不能改写原对象
+            return res
+        }
+
+        var xff = {
+            lessons: { js: 87, ts: 85, php: 90, css: 20 },
+            get data() {
+                return Object.values(this.lessons)
+            }
+        }
+        let res = obj.max.newcall(xff)
+        let res2 = obj.max2.newcall(null, [87, 85, 91, 20])
+        console.log(res);
+        console.log(res2);
+    </script>
+</body>
+
+</html>

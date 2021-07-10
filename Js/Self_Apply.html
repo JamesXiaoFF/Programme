@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.newapply = function (obj, arr) {
+            obj = obj || window
+            obj.p = this
+            let res
+            if (!arr) {
+                res = obj.p()
+            }
+            else {
+                res = obj.p(...arr)
+            }
+            delete obj.p
+            return res
+        }
+
+        var xff = {
+            lessons: { js: 87, ts: 85, php: 90, css: 20 },
+            get data() {
+                return Object.values(this.lessons)
+            }
+        }
+        let res = Math.max.newapply(null, xff.data)
+        console.log(res);
+    </script>
+</body>
+
+</html>

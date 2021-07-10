@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function initPerson(a, b, c) {
+            console.log(this.name);
+            console.log(a, b, c);
+        }
+        initPerson.prototype.game = 'lol'
+
+        let xff = { name: 'xff' }
+
+        Function.prototype.newbind = function (obj) {
+            let that = this
+            let arr1 = Array.prototype.slice.call(arguments, 1)
+            //创建一个函数o作为桥板，解决“直接修改原型对象”的问题
+            let o = function () { }
+            let newf = function () {
+                let arr2 = Array.prototype.slice.call(arguments)
+                let arrsum = arr1.concat(arr2)
+                if (this instanceof o) {
+                    that.apply(this, arrsum)
+                }
+                else {
+                    that.apply(obj, arrsum)
+                }
+            }
+            o.prototype = that.prototype
+            newf.prototype = new o
+            return newf
+        }
+        let bibi = initPerson.newbind(xff, 'male', 23)
+        console.dir(bibi);
+        let b = new bibi('basketball')
+        console.log(b.game);
+    </script>
+</body>
+
+</html>
