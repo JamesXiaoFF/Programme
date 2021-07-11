@@ -20,19 +20,19 @@
             let nodes = [node]
             let i = 1
             for (let j = 0; j < nodes.length; j++) {
-                let nodeLeft = (arr[i] == null) ? null : new TreeNode(arr[i])
+                let nodeLeft = arr[i] ? new TreeNode(arr[i]) : null
                 i++
                 nodes[j].left = nodeLeft
-                nodes.push(nodeLeft)
+                nodeLeft && nodes.push(nodeLeft)
                 if (i == arr.length) return node
-                let nodeRight = (arr[i] == null) ? null : new TreeNode(arr[i])
+                let nodeRight = arr[i] ? new TreeNode(arr[i]) : null
                 i++
                 nodes[j].right = nodeRight
-                nodes.push(nodeRight)
+                nodeRight && nodes.push(nodeRight)
                 if (i == arr.length) return node
             }
         }
-        console.log(create([1, 2, 3, 4, null, null, 5]));
+        let root = create()
     </script>
 </body>
 
