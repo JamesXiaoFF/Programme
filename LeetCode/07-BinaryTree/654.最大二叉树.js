@@ -37,11 +37,5 @@ var traversal = function (nums, left, right) {
 var constructMaximumBinaryTree = function (nums) {
     return traversal(nums, 0, nums.length)
 };
-function TreeNode(val, left, right) {
-    this.val = (val === undefined ? 0 : val)
-    this.left = (left === undefined ? null : left)
-    this.right = (right === undefined ? null : right)
-}
-constructMaximumBinaryTree([3, 2, 1, 6, 0, 5], 0, 6)
 // @lc code=end
 
