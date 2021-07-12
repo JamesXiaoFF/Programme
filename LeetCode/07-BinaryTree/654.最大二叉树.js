@@ -18,7 +18,7 @@
  * @return {TreeNode}
  */
 var traversal = function (nums, left, right) {
-    //左闭右开区间
+    //左闭右开区间，降低空间复杂度
     if (left >= right) return null
     let temp = -Infinity
     let pilot
