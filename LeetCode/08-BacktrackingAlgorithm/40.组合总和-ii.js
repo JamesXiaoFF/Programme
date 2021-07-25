@@ -33,6 +33,6 @@ var combinationSum2 = function (candidates, target) {
     backtracking(candidates, target, 0)
     return res
 };
-console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8));
+console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 3));
 // @lc code=end
 
