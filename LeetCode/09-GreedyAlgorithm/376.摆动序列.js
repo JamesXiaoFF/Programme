@@ -10,20 +10,17 @@
  * @return {number}
  */
 var wiggleMaxLength = function (nums) {
-    if (nums.length <= 1) {
-        return nums.length
-    }
-    let preDiff = 0, curDiff
-    let count = 1
-    for (let i = 0; i < nums.length - 1; i++) {
-        curDiff = nums[i + 1] - nums[i]
-        if ((preDiff <= 0 && curDiff > 0) || (preDiff >= 0 && curDiff < 0)) {
-            count++
-            preDiff = curDiff
+    let cur = 0, pre = 0
+    let res = 1
+    for (let i = 1; i < nums.length; i++) {
+        cur = nums[i] - nums[i - 1]
+        if ((cur > 0 && pre <= 0) || (cur < 0 && pre >= 0)) {
+            res++
+            pre = cur
         }
-
     }
-    return count
-};
+    return res
+}
+wiggleMaxLength([1, 5, 5, 6, 6, 7, 7, 3]) //3
 // @lc code=end
 

@@ -20,6 +20,6 @@ var maxProfit = function (prices) {
     }
     return Math.max(dp[0][prices.length - 1], dp[1][prices.length - 1])
 };
-maxProfit([7, 1, 5, 3, 6, 4])
+maxProfit([7, 1, 5, 3, 6, 4]) //5-1+6-3=7
 // @lc code=end
 

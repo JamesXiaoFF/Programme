@@ -18,9 +18,8 @@ var maxProfit = function (prices, fee) {
         dp[0][i] = Math.max(dp[0][i - 1], dp[1][i - 1] - prices[i])
         dp[1][i] = Math.max(dp[1][i - 1], dp[0][i - 1] + prices[i] - fee)
     }
-    console.log(dp);
     return dp[1][prices.length - 1]
 };
-maxProfit([1, 3, 2, 8, 4, 9], 2)
+maxProfit([1, 3, 2, 8, 4, 9], 2) //8-1-2+9-4-2=8
 // @lc code=end
 

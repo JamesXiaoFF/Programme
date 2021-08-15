@@ -31,5 +31,6 @@ var maxProfit = function (prices) { //动态规划
     }
     return dp[1][prices.length - 1]
 }
+maxProfit([7, 1, 5, 3, 6, 4]) //6-1=5
 // @lc code=end
 

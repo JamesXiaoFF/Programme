@@ -9,19 +9,19 @@
  * @param {number[]} nums
  * @return {number}
  */
+
 var maxSubArray = function (nums) {
     let res = -Infinity
-    let temp = 0
+    let count = 0
     for (let i = 0; i < nums.length; i++) {
-        temp += nums[i]
-        if (res < temp) {
-            res = temp
-        }
-        if (temp < 0) {
-            temp = 0
+        count += nums[i]
+        res = Math.max(res, count)
+        if (count < 0) {
+            count = 0
         }
     }
     return res
-};
+}
+maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]) //6
 // @lc code=end
 

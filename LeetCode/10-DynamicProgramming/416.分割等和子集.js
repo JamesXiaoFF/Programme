@@ -22,5 +22,6 @@ var canPartition = function (nums) {
     }
     return dp[target] == target
 };
+canPartition([3, 1, 5, 9]) //true
 // @lc code=end
 
