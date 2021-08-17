@@ -25,5 +25,6 @@ var minPatches = function (nums, n) {
     }
     return res
 };
+minPatches([1, 4], 8) //2
 // @lc code=end
 
